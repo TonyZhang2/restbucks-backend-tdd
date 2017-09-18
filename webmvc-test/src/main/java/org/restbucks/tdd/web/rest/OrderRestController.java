@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.restbucks.tdd.domain.ordering.Order;
 import org.restbucks.tdd.domain.ordering.OrderRepository;
 import org.restbucks.tdd.web.rest.assembler.OrderResourceAssembler;
+import org.restbucks.tdd.web.rest.resource.CatalogResource;
 import org.restbucks.tdd.web.rest.resource.OrderResource;
+import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +34,8 @@ public class OrderRestController {
 
 
     @GetMapping("/rel/orders/search")
-    public List<OrderResource> search(@RequestParam(value = "status") String status) {
-        return orderResourceAssembler.toResources(orderRepository.findByStatus(status));
+    public Resources<OrderResource> search(@RequestParam(value = "status") String status) {
+        return orderResourceAssembler.toHalResources(orderRepository.findByStatus(status));
     }
 
 }
