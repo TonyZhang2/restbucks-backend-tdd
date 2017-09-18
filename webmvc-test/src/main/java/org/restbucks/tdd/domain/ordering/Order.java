@@ -1,6 +1,7 @@
 package org.restbucks.tdd.domain.ordering;
 
 import static lombok.AccessLevel.PRIVATE;
+import static org.restbucks.tdd.domain.ordering.Order.Status.PAYMENT_EXPECTED;
 
 import java.util.UUID;
 import lombok.EqualsAndHashCode;
@@ -19,7 +20,7 @@ public class Order {
 
     private Location location;
 
-    private Status status;
+    private Status status = PAYMENT_EXPECTED;
 
     private Order(Identity id) {
         this.id = id;

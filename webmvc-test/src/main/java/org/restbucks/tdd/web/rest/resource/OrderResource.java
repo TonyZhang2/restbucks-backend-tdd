@@ -11,4 +11,5 @@ import org.springframework.hateoas.core.Relation;
 public class OrderResource extends ResourceSupport {
 
     private String location;
+    private String status;
 }
